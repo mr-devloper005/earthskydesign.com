@@ -4,7 +4,7 @@ export const siteIdentity = {
   tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Image + Social Profile platform',
   description:
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
-    'A image + social profile site for Earthskydesign, built for clean discovery and structured publishing.',
+    '',
   domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'earthskydesign.com',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://earthskydesign.com',
   ogImage: process.env.NEXT_PUBLIC_SITE_OG_IMAGE || '/og-default.png',

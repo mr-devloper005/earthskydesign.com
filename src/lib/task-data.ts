@@ -30,7 +30,7 @@ export const fetchTaskPosts = async (
   limit = 8,
   options?: { allowMockFallback?: boolean; fresh?: boolean }
 ) => {
-  const allowMockFallback = options?.allowMockFallback ?? process.env.NEXT_PUBLIC_USE_MOCK_CONTENT === "true";
+  const allowMockFallback = options?.allowMockFallback ?? true; // Force use mock data
   const type = getTaskContentType(task);
   const pickTaskPosts = (feed: SiteFeed<SitePost> | null) => {
     if (!feed) return [];

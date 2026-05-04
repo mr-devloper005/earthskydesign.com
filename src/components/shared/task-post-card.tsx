@@ -132,30 +132,31 @@ export function TaskPostCard({
         }
 
     return (
-      <Link href={href} className={`group flex h-full flex-col overflow-hidden transition duration-300 ${cardTone.frame}`}>
+      <Link href={href} className={`group flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl ${cardTone.frame}`}>
         <div className="relative aspect-[16/11] overflow-hidden bg-slate-100">
-          <ContentImage src={image} alt={altText} fill sizes={imageSizes} quality={75} className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" intrinsicWidth={960} intrinsicHeight={720} />
+          <ContentImage src={image} alt={altText} fill sizes={imageSizes} quality={75} className="object-cover transition-all duration-700 group-hover:scale-[1.08] group-hover:brightness-110" intrinsicWidth={960} intrinsicHeight={720} />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4">
-            <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] ${cardTone.badge}`}>
+            <span className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] ${cardTone.badge} backdrop-blur-sm`}>
               <Tag className="h-3.5 w-3.5" />
               {category}
             </span>
-            <span className="rounded-full bg-white/85 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-900">
+            <span className="rounded-full bg-white/90 backdrop-blur-sm px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-900 shadow-lg transition-transform duration-300 group-hover:scale-105">
               {variant === 'classified' ? 'Open now' : 'Verified'}
             </span>
           </div>
         </div>
         <div className="flex flex-1 flex-col p-5">
           <div className="flex items-center justify-between gap-3">
-            <h3 className={`line-clamp-2 text-xl font-semibold leading-snug ${cardTone.title}`}>{post.title}</h3>
-            <ArrowUpRight className={`h-5 w-5 shrink-0 ${cardTone.muted}`} />
+            <h3 className={`line-clamp-2 text-xl font-semibold leading-snug ${cardTone.title} transition-colors duration-300 group-hover:text-blue-600`}>{post.title}</h3>
+            <ArrowUpRight className={`h-5 w-5 shrink-0 ${cardTone.muted} transition-transform duration-300 group-hover:translate-x-1 group-hover:translate-y-1`} />
           </div>
-          <p className={`mt-3 line-clamp-3 text-sm leading-7 ${cardTone.muted}`}>{getExcerpt(content.description || post.summary) || 'Explore this local listing.'}</p>
+          <p className={`mt-3 line-clamp-3 text-sm leading-7 ${cardTone.muted} transition-colors duration-300 group-hover:text-slate-500`}>{getExcerpt(content.description || post.summary) || 'Explore this local listing.'}</p>
           <div className="mt-5 flex flex-wrap gap-3 text-xs">
-            {content.location ? <span className={`inline-flex items-center gap-1 ${cardTone.muted}`}><MapPin className="h-3.5 w-3.5" />{content.location}</span> : null}
-            {content.email ? <span className={`inline-flex items-center gap-1 ${cardTone.muted}`}><Mail className="h-3.5 w-3.5" />{content.email}</span> : null}
+            {content.location ? <span className={`inline-flex items-center gap-1 ${cardTone.muted} transition-colors duration-300 group-hover:text-blue-600`}><MapPin className="h-3.5 w-3.5" />{content.location}</span> : null}
+            {content.email ? <span className={`inline-flex items-center gap-1 ${cardTone.muted} transition-colors duration-300 group-hover:text-blue-600`}><Mail className="h-3.5 w-3.5" />{content.email}</span> : null}
           </div>
-          <div className={`mt-auto pt-5 text-sm font-semibold ${cardTone.cta}`}>{variant === 'classified' ? 'View offer' : 'View details'}</div>
+          <div className={`mt-auto pt-5 text-sm font-semibold ${cardTone.cta} transition-all duration-300 group-hover:text-blue-600 group-hover:translate-x-1`}>{variant === 'classified' ? 'View offer' : 'View details'}</div>
         </div>
       </Link>
     )
@@ -163,43 +164,43 @@ export function TaskPostCard({
 
   if (isBookmarkVariant) {
     return (
-      <Link href={href} className={`group flex h-full flex-row items-start gap-4 overflow-hidden p-5 transition duration-300 ${visualVariant.frame}`}>
-        <div className="mt-1 rounded-full bg-white/10 p-2.5 text-current transition group-hover:scale-105">
-          <ExternalLink className="h-4 w-4" />
+      <Link href={href} className={`group flex h-full flex-row items-start gap-4 overflow-hidden p-5 transition-all duration-300 hover:shadow-xl ${visualVariant.frame}`}>
+        <div className="mt-1 rounded-full bg-white/10 p-2.5 text-current transition-all duration-300 group-hover:scale-110 group-hover:bg-white/20">
+          <ExternalLink className="h-4 w-4 transition-transform duration-300 group-hover:rotate-45" />
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${visualVariant.badge}`}>
+            <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] ${visualVariant.badge} transition-transform duration-300 group-hover:scale-105`}>
               <Tag className="h-3.5 w-3.5" />
               {category}
             </span>
-            {content.location ? <span className={`inline-flex items-center gap-1 text-xs ${visualVariant.muted}`}><MapPin className="h-3.5 w-3.5" />{content.location}</span> : null}
+            {content.location ? <span className={`inline-flex items-center gap-1 text-xs ${visualVariant.muted} transition-colors duration-300 group-hover:text-blue-400`}><MapPin className="h-3.5 w-3.5" />{content.location}</span> : null}
           </div>
-          <h3 className={`mt-3 line-clamp-2 text-lg font-semibold leading-snug group-hover:opacity-85 ${visualVariant.title}`}>{post.title}</h3>
-          <p className={`mt-2 line-clamp-3 text-sm leading-7 ${visualVariant.muted}`}>{getExcerpt(content.description || post.summary, compact ? 120 : 180) || 'Explore this bookmark.'}</p>
-          {content.email ? <div className={`mt-3 inline-flex items-center gap-1 text-xs ${visualVariant.muted}`}><Mail className="h-3.5 w-3.5" />{content.email}</div> : null}
+          <h3 className={`mt-3 line-clamp-2 text-lg font-semibold leading-snug transition-all duration-300 group-hover:text-blue-400 ${visualVariant.title}`}>{post.title}</h3>
+          <p className={`mt-2 line-clamp-3 text-sm leading-7 transition-colors duration-300 group-hover:text-slate-400 ${visualVariant.muted}`}>{getExcerpt(content.description || post.summary, compact ? 120 : 180) || 'Explore this bookmark.'}</p>
+          {content.email ? <div className={`mt-3 inline-flex items-center gap-1 text-xs transition-colors duration-300 group-hover:text-blue-400 ${visualVariant.muted}`}><Mail className="h-3.5 w-3.5" />{content.email}</div> : null}
         </div>
       </Link>
     )
   }
 
   return (
-    <Link href={href} className={`group flex h-full flex-col overflow-hidden transition duration-300 ${visualVariant.frame}`}>
+    <Link href={href} className={`group flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${visualVariant.frame}`}>
       <div className={`relative ${imageAspect} overflow-hidden bg-[#ede2dc]`}>
-        <ContentImage src={image} alt={altText} fill sizes={imageSizes} quality={75} className="object-cover transition-transform duration-500 group-hover:scale-[1.04]" intrinsicWidth={960} intrinsicHeight={720} />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-80" />
-        <span className={`absolute left-4 top-4 inline-flex items-center gap-1 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] ${visualVariant.badge}`}>
+        <ContentImage src={image} alt={altText} fill sizes={imageSizes} quality={75} className="object-cover transition-all duration-700 group-hover:scale-[1.08] group-hover:brightness-110" intrinsicWidth={960} intrinsicHeight={720} />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-60" />
+        <span className={`absolute left-4 top-4 inline-flex items-center gap-1 rounded-full px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] ${visualVariant.badge} backdrop-blur-sm transition-transform duration-300 group-hover:scale-105`}>
           <Tag className="h-3.5 w-3.5" />
           {category}
         </span>
-        {variant === 'pdf' && <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-white/88 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-950 shadow"><FileText className="h-3.5 w-3.5" />PDF</span>}
+        {variant === 'pdf' && <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-white/90 backdrop-blur-sm px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-950 shadow-lg transition-transform duration-300 group-hover:scale-105"><FileText className="h-3.5 w-3.5" />PDF</span>}
       </div>
       <div className={`flex flex-1 flex-col p-5 ${compact ? 'py-4' : ''}`}>
-        <h3 className={`line-clamp-2 font-semibold leading-snug ${variant === 'article' ? 'text-[1.35rem]' : 'text-lg'} ${visualVariant.title}`}>{post.title}</h3>
-        <p className={`mt-3 text-sm leading-7 ${variant === 'article' ? 'line-clamp-4' : 'line-clamp-3'} ${visualVariant.muted}`}>{getExcerpt(content.description || post.summary) || 'Explore this post.'}</p>
+        <h3 className={`line-clamp-2 font-semibold leading-snug transition-colors duration-300 group-hover:text-blue-600 ${variant === 'article' ? 'text-[1.35rem]' : 'text-lg'} ${visualVariant.title}`}>{post.title}</h3>
+        <p className={`mt-3 text-sm leading-7 transition-colors duration-300 group-hover:text-slate-500 ${variant === 'article' ? 'line-clamp-4' : 'line-clamp-3'} ${visualVariant.muted}`}>{getExcerpt(content.description || post.summary) || 'Explore this post.'}</p>
         <div className="mt-auto pt-4">
-          {content.location && <div className={`inline-flex items-center gap-1 text-xs ${visualVariant.muted}`}><MapPin className="h-3.5 w-3.5" />{content.location}</div>}
-          {content.email && <div className={`mt-2 inline-flex items-center gap-1 text-xs ${visualVariant.muted}`}><Mail className="h-3.5 w-3.5" />{content.email}</div>}
+          {content.location && <div className={`inline-flex items-center gap-1 text-xs transition-colors duration-300 group-hover:text-blue-600 ${visualVariant.muted}`}><MapPin className="h-3.5 w-3.5" />{content.location}</div>}
+          {content.email && <div className={`mt-2 inline-flex items-center gap-1 text-xs transition-colors duration-300 group-hover:text-blue-600 ${visualVariant.muted}`}><Mail className="h-3.5 w-3.5" />{content.email}</div>}
         </div>
       </div>
     </Link>

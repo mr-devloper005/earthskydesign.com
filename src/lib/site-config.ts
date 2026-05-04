@@ -42,7 +42,7 @@ export type SiteConfig = {
 export const SITE_CONFIG: SiteConfig = {
   name: siteIdentity.name,
   tagline: siteIdentity.tagline,
-  description: siteIdentity.description,
+  description: '',
   domain: siteIdentity.domain,
   baseUrl: siteIdentity.url,
   defaultOgImage: siteIdentity.ogImage,
@@ -51,7 +51,7 @@ export const SITE_CONFIG: SiteConfig = {
   seo: {
     title: `${siteIdentity.name} - ${siteIdentity.tagline}`,
     titleTemplate: `%s | ${siteIdentity.name}`,
-    description: siteIdentity.description,
+    description: '',
     keywords: [
       'image gallery',
       'social profile',
