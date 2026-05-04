@@ -11,6 +11,8 @@ export const generateMetadata = () =>
     description: taskPageMetadata.image.description,
   });
 
-export default function ImageSharingPage({ searchParams }: { searchParams?: { category?: string } }) {
+export default async function ImageSharingPage({ searchParams }: { searchParams: { category?: string } }) {
+  console.log("ImageSharingPage searchParams:", searchParams);
+  console.log("Category passed to TaskListPage:", searchParams?.category);
   return <TaskListPage task="image" category={searchParams?.category} />;
 }

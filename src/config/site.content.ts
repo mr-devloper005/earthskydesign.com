@@ -2,13 +2,13 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Image + Social Profile platform',
+    tagline: '',
   },
   footer: {
-    tagline: 'Image + Social Profile platform',
+    tagline: '',
   },
   hero: {
-    badge: 'Image + social profile studio',
+    badge: '',
     title: ['A thoughtful home for', 'stories, visuals, and discovery.'],
     description: 'Earthskydesign is an image-led social profile platform—publish visuals, shape your public identity, and browse creators without the noise of unrelated formats.',
     primaryCta: {
@@ -156,7 +156,7 @@ export const taskIntroCopy: Record<
       'Use it as the front door for aesthetic discovery, then follow profiles when you want identity and context.',
     ],
     links: [
-      { label: 'Social profiles', href: '/profile' },
+      { label: 'View profiles', href: '/profile' },
       { label: 'Search', href: '/search' },
       { label: 'Home', href: '/' },
     ],

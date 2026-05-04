@@ -38,6 +38,13 @@ const getContent = (post: any): PostContent => {
   return content as PostContent;
 };
 
+const getPrimaryRichContent = (content: PostContent, post: any) =>
+  (typeof (content as any).body === "string" && (content as any).body.trim()) ||
+  (typeof content.description === "string" && content.description.trim()) ||
+  (typeof (content as any).excerpt === "string" && (content as any).excerpt.trim()) ||
+  (typeof post?.summary === "string" && post.summary.trim()) ||
+  "";
+
 const getImageUrls = (post: any, content: PostContent) => {
   const media = Array.isArray(post.media) ? post.media : [];
   const mediaImages = media
@@ -126,7 +133,7 @@ export default function LocalPostDetailPage() {
   }
 
   const category = content.category || post.tags?.[0] || taskConfig.label;
-  const description = content.description || post.summary || "Details coming soon.";
+  const description = getPrimaryRichContent(content, post) || "Details coming soon.";
   const descriptionHtml = formatRichHtml(description, "Details coming soon.");
   const location = content.address || content.location;
   const images = getImageUrls(post, content);

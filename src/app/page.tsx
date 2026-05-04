@@ -222,21 +222,7 @@ function DirectoryHome({ primaryTask, enabledTasks, listingPosts, classifiedPost
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <div className="flex items-end justify-between gap-4 border-b border-border pb-6">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-muted-foreground">Featured businesses</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">Strong listings with clearer trust cues.</h2>
-          </div>
-          <Link href="/listings" className="text-sm font-semibold text-primary hover:opacity-80">Open listings</Link>
-        </div>
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
-          {featuredListings.map((post) => (
-            <TaskPostCard key={post.id} post={post} href={getTaskHref(featuredTaskKey, post.slug)} taskKey={featuredTaskKey} />
-          ))}
-        </div>
-      </section>
-
+      
       <section className={`${tone.shell}`}>
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:px-8">
           <div className={`rounded-[2rem] p-7 ${tone.panel}`}>
@@ -385,7 +371,7 @@ function VisualHome({ primaryTask, imagePosts, profilePosts, articlePosts }: { p
 
         <div className="relative mx-auto mt-14 flex max-w-5xl justify-center px-2 [perspective:1400px] sm:mt-16">
           <div className="flex w-full max-w-4xl items-end justify-center gap-2 sm:gap-3 md:gap-4">
-            {slots.map((post, index) => {
+            {slots.filter((post): post is NonNullable<typeof post> => post !== null).map((post, index) => {
               const href = post ? getTaskHref(resolveTaskKey(post.task, 'image'), post.slug) : '/images'
               const src = post ? getPostImage(post) : '/placeholder.svg?height=900&width=1400'
               const title = post?.title || 'Your next visual'
@@ -398,11 +384,6 @@ function VisualHome({ primaryTask, imagePosts, profilePosts, articlePosts }: { p
                 >
                   <div className={`relative aspect-[3/5] overflow-hidden rounded-2xl border border-white/50 shadow-[0_24px_60px_rgba(40,16,10,0.28)] sm:rounded-3xl ${tone.panel}`}>
                     <ContentImage src={src} alt={title} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
-                    <div className="absolute inset-x-3 bottom-3 flex justify-center">
-                      <span className="rounded-full border border-white/50 bg-white/75 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#1a0f0c] shadow-sm backdrop-blur-md sm:text-[11px]">
-                        Try now
-                      </span>
-                    </div>
                   </div>
                 </Link>
               )
@@ -437,11 +418,7 @@ function VisualHome({ primaryTask, imagePosts, profilePosts, articlePosts }: { p
                   <p className={`mt-2 text-sm leading-7 ${tone.muted}`}>{post.summary || 'Public profile, presence, and visual identity.'}</p>
                 </Link>
               ))
-            ) : (
-              <div className={`col-span-2 rounded-[1.75rem] border border-dashed border-black/15 bg-white/50 p-10 text-center text-sm ${tone.muted}`}>
-                Creator profiles will appear here as they publish.
-              </div>
-            )}
+            ) : null}
           </div>
         </div>
       </section>
